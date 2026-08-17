@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Work in Progress &mdash; BM Management</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* Styles scoped to this temporary page only — nothing here
+       touches styles.css, so removing wip.html removes all of it. */
+    .wip-wrap {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--s-4) var(--s-3);
+    }
+    .wip-card {
+      width: 100%;
+      max-width: 420px;
+      background: #fdf6e9;
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: var(--s-4);
+      text-align: center;
+    }
+    .wip-card h1 {
+      font-size: 1.4rem;
+      margin-bottom: var(--s-2);
+      color: #4d3a1c;
+    }
+    .wip-card p {
+      color: #6b512a;
+      margin-bottom: var(--s-3);
+    }
+    .wip-continue {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="wip-wrap">
+  <div class="wip-card">
+    <h1>Work in Progress</h1>
+    <p>
+      You're looking at an early version of this site. Some content, contact
+      details, and pages are still being finished.
+    </p>
+    <button class="btn btn--primary wip-continue" type="button" id="wip-continue">Continue to the Site</button>
+  </div>
+</div>
+
+<script src="assets/js/notice.js"></script>
+<script>
+  document.getElementById("wip-continue").addEventListener("click", function () {
+    noticeAcknowledge();
+    location.replace(noticeRedirectTarget());
+  });
+</script>
+</body>
+</html>

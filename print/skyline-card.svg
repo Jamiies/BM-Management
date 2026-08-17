@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 240" preserveAspectRatio="xMidYMax meet" role="presentation">
+  <!--
+    Denver skyline strip for the business card back.
+
+    NOT the website hero SVG. That one's buildings (#16233a) are nearly the
+    same colour as the card's navy (#0d1f33), so on the card the silhouettes
+    vanished and only its warm window lights showed — pale boxes on navy.
+
+    ============ READ THIS BEFORE MOVING ANYTHING VERTICALLY ============
+    Only the TOP 187 units of this 240-unit viewBox are ever seen.
+
+    The strip is width-anchored to the card's full bleed width (3.75in), so
+    it is 3.75/6.667 = 0.5625in tall. It sits flush to the card's bottom
+    bleed edge, and the printer trims 0.125in off that edge — which is
+    0.125/0.5625 = 22% of the strip, i.e. everything below y=187.
+
+    So y=187 IS THE BOTTOM EDGE OF THE PRINTED CARD. An earlier version put
+    a low-rise band at y=186-240 and it vanished on the trimmed card.
+
+    Rules of thumb:
+      - rooflines belong in y 20..170; every shape still runs to y=240
+      - the trim also removes ~53 units from each END, so a shape meant to
+        reach a corner must start at x=0 / end at x=1600 AND be wide enough
+        (~115) to still show afterwards
+    =====================================================================
+
+    SEPARATION: buildings are individual shapes with an 8-unit gap between
+    them, and they alternate between three tones so neighbours stay readable
+    where the roofline is similar. An earlier version used one continuous
+    low-rise band to guarantee the bottom edge was covered — it worked, but
+    it fused the whole skyline into a single blob. The 8-unit gaps are narrow
+    enough that the base still reads as a dense city rather than as isolated
+    towers standing in a row.
+
+    Tones:  A #3a648f (mid)   B #2f5480 (dark)   C #46769f (light)
+  -->
+
+  <!-- LEFT CORNER ANCHOR — starts at x=0, 118 wide so ~65 units survive the trim -->
+  <rect x="0"    y="126" width="118" height="114" fill="#2f5480"/>
+
+  <rect x="126"  y="104" width="44"  height="136" fill="#3a648f"/>
+  <rect x="178"  y="140" width="58"  height="100" fill="#46769f"/>
+
+  <!-- stepped tower -->
+  <path d="M244,240 L244,116 L268,116 L268,92 L318,92 L318,116 L342,116 L342,240 Z" fill="#3a648f"/>
+
+  <rect x="350"  y="122" width="48"  height="118" fill="#46769f"/>
+
+  <!-- cathedral spires -->
+  <path d="M406,240 L406,140 L422,108 L438,140 L438,240 Z" fill="#2f5480"/>
+  <path d="M446,240 L446,152 L459,128 L472,152 L472,240 Z" fill="#3a648f"/>
+
+  <rect x="480"  y="138" width="54"  height="102" fill="#2f5480"/>
+
+  <!-- Republic Plaza style flat tower -->
+  <rect x="542"  y="38"  width="78"  height="202" fill="#46769f"/>
+  <rect x="554"  y="22"  width="54"  height="18"  fill="#46769f"/>
+
+  <rect x="628"  y="106" width="50"  height="134" fill="#3a648f"/>
+
+  <!-- pointed tower -->
+  <path d="M686,240 L686,78 L715,50 L744,78 L744,240 Z" fill="#2f5480"/>
+
+  <rect x="752"  y="124" width="46"  height="116" fill="#46769f"/>
+
+  <!-- "cash register" curved crown -->
+  <path d="M806,240 L806,64 C806,24 900,24 900,64 L900,240 Z" fill="#3a648f"/>
+
+  <!-- antenna tower -->
+  <rect x="908"  y="98"  width="58"  height="142" fill="#46769f"/>
+  <rect x="932"  y="54"  width="8"   height="46"  fill="#46769f"/>
+
+  <!-- 1801 California style slab -->
+  <rect x="974"  y="60"  width="68"  height="180" fill="#2f5480"/>
+
+  <rect x="1050" y="118" width="44"  height="122" fill="#3a648f"/>
+
+  <!-- pointed crown tower -->
+  <path d="M1102,240 L1102,90 L1131,58 L1160,90 L1160,240 Z" fill="#46769f"/>
+
+  <rect x="1168" y="126" width="54"  height="114" fill="#2f5480"/>
+  <rect x="1230" y="110" width="40"  height="130" fill="#3a648f"/>
+  <rect x="1278" y="134" width="60"  height="106" fill="#46769f"/>
+
+  <!-- pointed low-rise -->
+  <path d="M1346,240 L1346,136 L1371,118 L1396,136 L1396,240 Z" fill="#2f5480"/>
+
+  <rect x="1404" y="138" width="68"  height="102" fill="#3a648f"/>
+
+  <!-- RIGHT CORNER ANCHOR, mirroring the left -->
+  <rect x="1480" y="124" width="120" height="116" fill="#46769f"/>
+</svg>
