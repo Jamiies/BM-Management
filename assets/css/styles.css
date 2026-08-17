@@ -638,7 +638,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: var(--s-4) 0; }
   gap: var(--s-4);
 }
 
-.site-footer h4 {
+.site-footer h3 {
   color: #fff;
   font-size: 0.8rem;
   letter-spacing: 0.16em;
@@ -674,7 +674,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: var(--s-4) 0; }
   max-width: var(--maxw);
   margin: var(--s-2) auto 0;
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.50);
 }
 .photo-credit a { color: rgba(255,255,255,0.6); text-decoration: underline; }
 .photo-credit a:hover { color: var(--accent-lt); }

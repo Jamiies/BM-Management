@@ -125,7 +125,9 @@ business, having an accessibility professional audit it is worth the money.
 ------------------------------------------------------------------------------
 
   [x] Semantic HTML5 landmarks (header / nav / main / footer / section / article)
-  [x] One <h1> per page, headings in logical order (no skipped levels)
+  [x] One <h1> per page, headings in logical order (no skipped levels) —
+      RE-VERIFIED 2026-08-17 with axe-core; two real skips found and fixed,
+      see the CHANGE LOG entry for that date
   [x] "Skip to main content" link, hidden until keyboard-focused
   [x] aria-current="page" on the active nav item
   [x] aria-label on the <nav> and on the mobile menu button
@@ -159,6 +161,8 @@ business, having an accessibility professional audit it is worth the money.
         footer text 72% white on navy .......... 9.10:1  pass (AAA)
         footer-bottom 55% white on navy ........ 5.85:1  pass
         white on the hero, worst-case pixel .... 10.4:1  pass (AAA)
+        photo-credit 45% white on navy ......... 4.38:1  FAILED — FIXED 2026-08-17
+        photo-credit 50% white on navy (new) ... 5.08:1  pass
       THE FIX: --accent (#b07d3a) is now decorative-only (rules, borders,
       timeline dots, focus rings — all non-text, all clear the 3:1 non-text
       threshold). Anything that is small text or a button now uses
@@ -244,7 +248,11 @@ business, having an accessibility professional audit it is worth the money.
       PDF as a convenience download. (Already structured this way.)
 
   AUTOMATED + MANUAL TESTING
-  [ ] axe DevTools browser extension (free) on every page
+  [x] axe-core run programmatically against all 5 live pages — 2026-08-17,
+      see CHANGE LOG. Found and fixed 2 issue types (contrast + heading
+      order); re-run afterward came back clean on all 5 pages. Worth
+      re-running after any significant content change — this only checks
+      the DOM as currently rendered.
   [ ] WAVE browser extension (free) on every page
   [ ] Lighthouse accessibility audit in Chrome DevTools — target 100
   [ ] W3C HTML validator — clean markup prevents a lot of AT bugs
@@ -473,6 +481,29 @@ PART 5 — HOW TO EDIT THIS SITE
 ===============================================================================
 CHANGE LOG
 ===============================================================================
+
+2026-08-17  Ran axe-core (the same engine behind the axe Accessibility
+            Linter VS Code extension) against all 5 live pages. Found and
+            fixed two real WCAG issues, both present on every page:
+
+              - COLOR CONTRAST (serious): .photo-credit — the hero photo's
+                required attribution line — was rgba(255,255,255,0.45) on
+                the navy footer, 4.38:1 against the 4.5:1 AA minimum.
+                Raised to 0.50 (5.08:1). Text is barely lighter; the credit
+                line still reads as de-emphasized, as intended.
+
+              - HEADING ORDER (moderate): the footer's three column
+                headings ("BM Management", "Site", "Contact") were <h4>,
+                but the last heading in <main> on every page is <h2> — a
+                skipped level. Retagged to <h3> (footer headings are fully
+                styled by class, not by tag, so this is a zero-visual-change
+                fix). services.html additionally jumped straight from <h1>
+                to <h3> across the four service cards with no <h2> in
+                between; fixed with a <h2 class="visually-hidden"> before
+                the service-cards grid — sighted visitors see no change,
+                screen readers get a correct outline.
+
+            Re-ran the audit after fixing: 0 violations on all 5 pages.
 
 2026-07-24  First draft. Five pages, shared header/footer/stylesheet.
             Real content: bio text (verbatim from his previous firm's site),
