@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Card — BM Management</title>
+<style>
+/* ==========================================================================
+   BM MANAGEMENT — BUSINESS CARD
+   Two-sided, print-ready. 3.5 x 2in trim + 0.125in bleed = 3.75 x 2.25in.
+
+   Everything is set in INCHES, not pixels, so it prints at true size at any
+   DPI. Do not convert these to px.
+
+   The design tokens below mirror assets/css/styles.css. They are duplicated
+   rather than linked so this file can be sent to a printer on its own —
+   if the site palette changes, change it here too.
+   ========================================================================== */
+
+:root {
+  --navy-900: #0d1f33;
+  --navy-800: #14314f;
+  --navy-700: #1c4166;
+  --accent:    #b07d3a;
+  --accent-dk: #8a6029;
+  --accent-lt: #e0c089;   /* kept in sync with assets/css/styles.css */
+  --ink:       #1a2430;
+  --ink-soft:  #4a5768;
+  --line:      #dde3ea;
+
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --font-sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Card geometry — change in one place */
+  --trim-w: 3.5in;
+  --trim-h: 2in;
+  --bleed:  0.125in;   /* printer trims into this; nothing important inside it */
+  --safe:   0.16in;    /* keep all content this far inside the trim edge */
+}
+
+* { box-sizing: border-box; }
+
+/* --------------------------------------------------------------------------
+   Screen preview chrome (hidden when printing)
+   -------------------------------------------------------------------------- */
+body {
+  margin: 0;
+  padding: 0.5in;
+  background: #6b7280;
+  font-family: var(--font-sans);
+  color: #fff;
+}
+
+.sheet-title { font-size: 15px; letter-spacing: .04em; margin: 0 0 4px; }
+.sheet-note  { font-size: 12px; opacity: .85; margin: 0 0 24px; max-width: 6.5in; line-height: 1.55; }
+.side-label  { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; opacity: .8; margin: 22px 0 8px; }
+
+/* --------------------------------------------------------------------------
+   The card itself
+   -------------------------------------------------------------------------- */
+.card {
+  position: relative;
+  width:  calc(var(--trim-w) + var(--bleed) * 2);
+  height: calc(var(--trim-h) + var(--bleed) * 2);
+  padding: calc(var(--bleed) + var(--safe));
+  overflow: hidden;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  display: flex;
+  flex-direction: column;
+  /* screen-only shadow, removed for print */
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+}
+
+/* Trim-line guide — screen only, so you can see where the cut lands */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: var(--bleed);
+  border: 1px dashed rgba(176,125,58,.55);
+  pointer-events: none;
+}
+
+/* ============================ FRONT ============================ */
+
+.card-front { border-top: calc(var(--bleed) + 0.055in) solid var(--navy-900); }
+
+/* the navy band bleeds off the top edge; nudge content back down */
+.card-front .row-top { margin-top: 0.02in; }
+
+.row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.14in;
+}
+
+/* --- identity, top left --- */
+/* flex-shrink:0 on both sides of the top row, or the wordmark wraps to two
+   lines when it competes with the service list for space. */
+.identity { display: flex; align-items: center; gap: 0.075in; flex: 0 0 auto; }
+
+.monogram {
+  width: 0.34in; height: 0.34in;
+  flex: 0 0 0.34in;
+  background: var(--navy-900);
+  color: #fff;
+  font-family: var(--font-serif);
+  font-size: 9.5pt;
+  letter-spacing: .01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 0.028in solid var(--accent);
+}
+
+.wordmark {
+  font-family: var(--font-serif);
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--navy-900);
+  line-height: 1.06;
+  letter-spacing: -0.002em;
+  white-space: nowrap;
+}
+.wordmark-sub {
+  font-size: 5.4pt;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 0.022in;
+}
+
+/* --- service lines, top right (as requested) --- */
+/* A single bronze rule caps the block, echoing the .hero-rule on the site.
+   An earlier draft put a small rule before every line — against a ragged
+   right-aligned edge the dashes read as scattered rather than as a list. */
+.services {
+  list-style: none;
+  margin: 0.03in 0 0;
+  padding: 0.055in 0 0;
+  text-align: right;
+  flex: 0 0 auto;
+  border-top: 0.014in solid var(--accent);
+}
+.services li {
+  font-size: 5.9pt;
+  letter-spacing: .085em;
+  text-transform: uppercase;
+  color: var(--navy-800);
+  line-height: 1.68;
+  white-space: nowrap;
+}
+
+/* --- name block, bottom left --- */
+.spacer { flex: 1 1 auto; }
+
+.name {
+  font-family: var(--font-serif);
+  font-size: 13pt;
+  font-weight: 600;
+  color: var(--navy-900);
+  line-height: 1.1;
+}
+.role {
+  font-size: 5.9pt;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--accent-dk);
+  margin-top: 0.028in;
+  font-weight: 600;
+}
+
+.rule {
+  width: 0.42in;
+  height: 0.019in;
+  background: var(--accent);
+  margin: 0.075in 0;
+}
+
+.contact {
+  font-size: 6.6pt;
+  line-height: 1.72;
+  color: var(--ink-soft);
+}
+.contact a { color: inherit; text-decoration: none; }
+.contact .sep { color: var(--accent); margin: 0 0.04in; }
+
+/* ============================ BACK ============================= */
+
+.card-back {
+  background: var(--navy-900);
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 0.3in;
+}
+
+/* Denver skyline strip — skyline-card.svg, drawn for this card specifically.
+   The website's hero SVG was used here at first and looked wrong: its
+   buildings (#16233a) are near-identical to this card's navy (#0d1f33) so
+   the silhouettes disappeared, while its warm window lights stayed visible.
+   The result read as random pale boxes scattered on navy. The card strip has
+   no windows and a fill light enough to actually register.
+   Masked at the top so it dissolves into the navy instead of ending on a
+   hard horizon line behind the tagline. */
+.card-back .skyline {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: auto;          /* strip is 1600x240; let it size to its own ratio */
+  opacity: .5;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 62%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 62%);
+}
+
+.back-inner { position: relative; z-index: 2; }
+
+.monogram-lg {
+  width: 0.54in; height: 0.54in;
+  margin: 0 auto 0.1in;
+  background: transparent;
+  border: 0.014in solid var(--accent);
+  color: #fff;
+  font-family: var(--font-serif);
+  font-size: 15pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-name {
+  font-family: var(--font-serif);
+  font-size: 12.5pt;
+  color: #fff;
+  letter-spacing: .01em;
+}
+.back-tag {
+  font-size: 5.9pt;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent-lt);
+  margin-top: 0.055in;
+}
+.back-line {
+  font-size: 6.4pt;
+  color: rgba(255,255,255,.72);
+  margin-top: 0.075in;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   PRINT
+   One card per page at exact trim+bleed size, guides removed.
+   -------------------------------------------------------------------------- */
+@page {
+  size: 3.75in 2.25in;   /* trim + bleed */
+  margin: 0;
+}
+
+@media print {
+  body { padding: 0; background: #fff; }
+  .sheet-title, .sheet-note, .side-label { display: none !important; }
+
+  .card {
+    box-shadow: none;
+    margin: 0;
+    page-break-after: always;
+    break-after: page;
+  }
+  .card:last-of-type { page-break-after: auto; break-after: auto; }
+  .card::after { display: none; }   /* no trim guide on the real thing */
+
+  /* make sure the navy actually prints rather than being dropped as background */
+  .card-back, .monogram, .card-front { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<p class="sheet-title">BM Management — business card, draft 1</p>
+<p class="sheet-note">
+  3.5 &times; 2in trim with 0.125in bleed (3.75 &times; 2.25in overall). The dashed
+  line is the trim guide and shows on screen only &mdash; it disappears when printed.
+  Print via your browser at 100% scale, no page scaling. Contact details are still
+  placeholders.
+</p>
+
+<p class="side-label">Front</p>
+
+<!-- ======================= FRONT ======================= -->
+<div class="card card-front">
+
+  <div class="row-top">
+    <div class="identity">
+      <div class="monogram">BM</div>
+      <div>
+        <div class="wordmark">BM Management</div>
+        <div class="wordmark-sub">Denver, Colorado</div>
+      </div>
+    </div>
+
+    <!-- Service lines, top right -->
+    <ul class="services">
+      <li>Forensic Accounting</li>
+      <li>Fractional CFO Support</li>
+      <li>Estate Management</li>
+      <li>Receiverships</li>
+    </ul>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="name">Bill Mellenthin, CPA</div>
+  <!-- TODO: confirm the title. "Owner" is accurate for a single-member LLC;
+       "Principal" or "Owner &amp; Principal" also work. -->
+  <div class="role">Owner</div>
+
+  <div class="rule"></div>
+
+  <div class="contact">
+    <!-- TODO: replace all three with real details -->
+    <a href="mailto:REPLACE-WITH-EMAIL@example.com">REPLACE-WITH-EMAIL@example.com</a><br>
+    <span>(303) 555-1234</span><span class="sep">&middot;</span><span>Denver, CO</span>
+  </div>
+
+</div>
+
+<p class="side-label">Back</p>
+
+<!-- ======================== BACK ======================== -->
+<div class="card card-back">
+  <img class="skyline" src="skyline-card.svg" alt="">
+  <div class="back-inner">
+    <div class="monogram-lg">BM</div>
+    <div class="back-name">BM Management</div>
+    <div class="back-tag">Bill Mellenthin, CPA</div>
+    <div class="back-line">
+      Denver &amp; the Colorado Front Range
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
