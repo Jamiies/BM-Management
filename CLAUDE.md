@@ -130,7 +130,7 @@ Mellenthin Website/
 │   ├── css/styles.css        One stylesheet for the whole site
 │   ├── js/main.js            Mobile menu ONLY — site works without JS
 │   └── images/
-│       ├── bill-mellenthin.jpg          His portrait (682×328 source)
+│       ├── bill-mellenthin.jpg          His portrait (900×1125, 4:5 crop)
 │       ├── bill-mellenthin.avif         Original format
 │       ├── hero-denver-rockies.jpg      Hero photo, 2000px (151KB)
 │       ├── hero-denver-rockies-small.jpg  Hero photo, 1100px (53KB)
@@ -300,7 +300,6 @@ than the Services page. **Bill has not answered this.**
 - Replace `mailto:` links with a real contact form (Formspree/Netlify/Basin)
 - Favicon, Open Graph tags, schema.org markup
 - The full ADA/WCAG 2.1 AA pass — plan is in `docs/`
-- A higher-resolution portrait; the current source is 682×328, a wide crop
 
 ---
 

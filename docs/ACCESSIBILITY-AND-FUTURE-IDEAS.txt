@@ -105,9 +105,9 @@ something on this list.
   [ ] Accounting software he wants listed (QuickBooks / NetSuite / Sage / ERP)
   [ ] Professional memberships (AICPA? Colorado Society of CPAs?)
   [ ] Year he graduated from CU Boulder (optional — he may not want it)
-  [ ] A higher-resolution portrait if he has one. The current file is
-      682 x 328 px, which is a wide crop — it works, but a taller original
-      would look better in the portrait frame.
+  [x] A higher-resolution portrait — DONE 2026-08-17. Replaced the 682x328
+      wide crop with a real 4:5 portrait crop from a proper headshot. See
+      CHANGE LOG.
 
 
 ===============================================================================
@@ -481,6 +481,32 @@ PART 5 — HOW TO EDIT THIS SITE
 ===============================================================================
 CHANGE LOG
 ===============================================================================
+
+2026-08-17  Replaced the placeholder portrait. The old bill-mellenthin.jpg
+            was a 682x328 wide crop (flagged as a known issue since the
+            first draft). James supplied a real headshot (source 3024x4032,
+            EXIF orientation normal, no rotation needed).
+
+            Cropped to the site's 4:5 portrait-frame ratio (trimmed 252px
+            of excess headroom off the top only, keeping the full jacket
+            visible) and resized to 900x1125 for web use — 141KB, in line
+            with the site's other image sizes.
+
+            Removed the "object-position: center 22%" CSS hack on
+            .portrait-frame img — that existed only to pull focus onto the
+            face within the old bad wide crop. The new photo is already
+            cropped to the frame's exact aspect ratio, so object-fit: cover
+            needs no further repositioning.
+
+            Verified in-browser (index.html and bio.html, desktop + mobile)
+            after the swap. Also checked for the horizontal-scroll bug this
+            project has watched for since the first draft: real DOM
+            scrollWidth vs innerWidth at 390px shows no overflow on any
+            page. (An early headless-Chrome screenshot at a hardcoded
+            390px window looked cut off — that was a capture-tool artifact,
+            not a real bug; Chrome silently rendered wider than the
+            requested window size. Confirmed via direct JS measurement
+            instead of trusting the screenshot.)
 
 2026-08-17  Ran axe-core (the same engine behind the axe Accessibility
             Linter VS Code extension) against all 5 live pages. Found and

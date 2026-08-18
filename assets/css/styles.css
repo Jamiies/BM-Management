@@ -445,8 +445,6 @@ hr { border: 0; border-top: 1px solid var(--line); margin: var(--s-4) 0; }
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  /* the source photo is a wide crop — pull focus onto the face */
-  object-position: center 22%;
 }
 
 .portrait-caption {
